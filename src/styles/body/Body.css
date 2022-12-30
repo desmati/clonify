@@ -1,0 +1,13 @@
+.body__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.body__playlists {
+  overflow-y: hidden;
+  overflow-x: scroll;
+  width: 100%;
+}
+.playlists__scroll {
+  width: 250vw;
+}
