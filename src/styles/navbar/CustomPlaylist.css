@@ -1,0 +1,8 @@
+.customplaylist__container{
+	position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--background-color);
+  height: 100vh;
+}

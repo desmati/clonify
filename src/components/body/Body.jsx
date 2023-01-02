@@ -9,7 +9,7 @@ export function Body() {
       <Section title="Discover">
         <Discover
           title="Discover Weekly"
-          description="jdhfkjhdkfhsdkjfhjh gksgf ksjfg ksdjgk sdgh ksdfjghk sdfjg skdfjg "
+          description="Our own playlist. Give a try!"
           photo="/images/discover.png"
         />
       </Section>
