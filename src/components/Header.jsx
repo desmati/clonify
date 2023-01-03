@@ -9,7 +9,7 @@ export function Header() {
       <div className="user__profile">
         <div className="user__avatar">
           <FaUserCircle className="user__photo" />
-          <div className="user__name">John Doe</div>
+          <div className="user__name">John Wick</div>
         </div>
         <CiSettings className="settings" />
       </div>

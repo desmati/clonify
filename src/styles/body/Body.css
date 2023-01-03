@@ -10,4 +10,11 @@
 }
 .playlists__scroll {
   width: 250vw;
+  
 }
+
+.body__playlists .playlist__container p {
+  margin-left: 0.6rem ;
+}
+
+.body__playlists .playlist__container img {}
