@@ -7,7 +7,7 @@ import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary } from "react-icons/bi";
 
 export function Menu() {
-  const [isPlaylistsVisible, setisPlaylistsVisible] = useState(false);  //false
+  const [isPlaylistsVisible, setisPlaylistsVisible] = useState(false); //false
 
   const onLibraryClick = () => {
     setisPlaylistsVisible(!isPlaylistsVisible); // true
@@ -16,7 +16,6 @@ export function Menu() {
   const onHomeClick = () => {
     setisPlaylistsVisible(false);
   };
-  
 
   return (
     <>
@@ -29,7 +28,7 @@ export function Menu() {
           <AiOutlineSearch />
           <span>Search</span>
         </div>
-        <div className="menu__button" onClick={onLibraryClick}> 
+        <div className="menu__button" onClick={onLibraryClick}>
           <BiLibrary />
           <span>Library</span>
         </div>
@@ -41,4 +40,4 @@ export function Menu() {
 
 export default Menu;
 
-// The state is false by default. We then attach the state to an onClick function that we set to true with the (!) mark. But it only becomes true when we CLICK. Then we write {isPlaylistsVisible && <Playlists />} to direct it so Playlists when it becomes true. 
+// The state is false by default. We then attach the state to an onClick function that we set to true with the (!) mark. But it only becomes true when we CLICK. Then we write {isPlaylistsVisible && <Playlists />} to direct it so Playlists when it becomes true.

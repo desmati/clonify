@@ -49,7 +49,7 @@ export function Playlists() {
           />
         </div>
       </div>
-      {isCustomPlaylistsVisible && <CustomPlaylist /> }
+      {isCustomPlaylistsVisible && <CustomPlaylist />}
     </>
   );
 }

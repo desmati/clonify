@@ -1,5 +1,5 @@
-.customplaylist__container{
-	position: fixed;
+.customplaylist__container {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,8 +20,6 @@
   margin-left: 1rem;
 }
 
-
-
 .albumplay__container {
   display: flex;
   flex-direction: row;
@@ -29,12 +27,7 @@
   padding: 1rem;
 }
 
-
-.album__details {
-
-}
-
 .pause__icon {
   font-size: 3rem;
-  color: #17B169;
+  color: #17b169;
 }
