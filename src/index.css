@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Remove default margin */
@@ -83,3 +84,5 @@ body {
   background: var(--background-color);
   color: var(--text-color);
 }
+
+

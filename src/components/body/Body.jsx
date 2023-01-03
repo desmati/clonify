@@ -1,46 +1,63 @@
+import { useState } from "react";
 import "../../styles/body/Body.css";
+import { CustomPlaylist } from "../navbar/CustomPlaylist"
 import { Section } from "./Section";
 import { Discover } from "./Discover";
 import { Playlist } from "./Playlist";
 
 export function Body() {
+
+  
+
+const [sendToPlaylist, setSendToPlaylist] = useState(false);
+
+const clickDiscovery = () => {
+setSendToPlaylist(!sendToPlaylist)
+};
+
+const onHomeClick = () => {
+  setSendToPlaylist(false)
+}
+
+
   return (
     <div className="body__container">
-      <Section title="Discover">
+      <div onClick={clickDiscovery}><Section title="Discover" >
         <Discover
           title="Discover Weekly"
           description="Our own playlist. Give a try!"
           photo="/images/discover.png"
         />
       </Section>
+      </div>
 
       <Section title="Recommended">
         <div className="body__playlists">
           <div className="playlists__scroll">
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/vampire.png"
               name="Coding Mode"
-              description="Hans Zimmer, Daft Punk, Khruangbin"
+              description="4-2"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/maracatu.png"
               name="New World"
-              description="Ebi"
+              description="Arneo Turnes - Winter 2020"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/adfab.png"
               name="Beats to think to"
-              description="N'to, HVOB, Heater"
+              description="AdFab Open space"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/vostop.png"
               name="Hollow Shell"
-              description="Cava"
+              description="Vos Top Titres en 2019"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/edbangeer.png"
               name="The Rain of Love"
-              description="Naser Cheshm Azar"
+              description="Ed Banger 15 ans"
             />
           </div>
         </div>
@@ -50,33 +67,34 @@ export function Body() {
         <div className="body__playlists">
           <div className="playlists__scroll">
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/adfab.png"
               name="Beats to think to"
-              description="N'to, HVOB, Heater"
+              description="DAGO Summer mix"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/fleetwoood.png"
               name="Coding Mode"
-              description="Hans Zimmer, Daft Punk, Khruangbin"
+              description="Rock Classics"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/dailymix.png"
               name="Hollow Shell"
-              description="Cava"
+              description="80's Smash Hits"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/adfab.png"
               name="The Rain of Love"
-              description="Naser Cheshm Azar"
+              description="Hip Hop Raggae"
             />
             <Playlist
-              photo="/images/cover.png"
+              photo="/images/edbangeer.png"
               name="New World"
-              description="Ebi"
+              description="Ultimate Dancefloor Oldies"
             />
           </div>
         </div>
       </Section>
+      {sendToPlaylist && <CustomPlaylist />}
     </div>
   );
 }

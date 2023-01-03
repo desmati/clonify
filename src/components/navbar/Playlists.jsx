@@ -28,23 +28,23 @@ export function Playlists() {
 
         <div className="discover__playlist" onClick={onCustomPlaylistClick}>
           <Discover
-            title="Custom Playlist"
+            title="Spotify Hits"
             description="Our own playlist. Give a try!"
             photo="/images/discover.png"
           />
           <Discover
-            title="Random 1"
-            description="RANDOM"
+            title="Summer Mix"
+            description="2022"
             photo="/images/discover.png"
           />
           <Discover
-            title="Random 2"
-            description="RANDOM"
+            title="Hip-Hop 2000's"
+            description="Best of all time"
             photo="/images/discover.png"
           />
           <Discover
-            title="Random 3"
-            description="RANDOM"
+            title="Afro Beat Mix"
+            description="2022"
             photo="/images/discover.png"
           />
         </div>
