@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../styles/body/Body.css";
 import { CustomPlaylist } from "../navbar/CustomPlaylist";
 import { Section } from "./Section";
@@ -6,19 +6,9 @@ import { Discover } from "./Discover";
 import { Playlist } from "./Playlist";
 
 export function Body() {
-  const [sendToPlaylist, setSendToPlaylist] = useState(false);
-
-  const clickDiscovery = () => {
-    setSendToPlaylist(!sendToPlaylist);
-  };
-
-  const onHomeClick = () => {
-    setSendToPlaylist(false);
-  };
-
   return (
     <div className="body__container">
-      <div onClick={clickDiscovery}>
+      <div>
         <Section title="Discover">
           <Discover
             title="Discover Weekly"
@@ -91,7 +81,6 @@ export function Body() {
           </div>
         </div>
       </Section>
-      {sendToPlaylist && <CustomPlaylist />}
     </div>
   );
 }

@@ -8,27 +8,43 @@ import { BiLibrary } from "react-icons/bi";
 
 export function Menu() {
   const [isPlaylistsVisible, setisPlaylistsVisible] = useState(false); //false
+  const [activeButton, setactiveButton] = useState("home");
 
-  const onLibraryClick = () => {
-    setisPlaylistsVisible(!isPlaylistsVisible); // true
-  };
-
-  const onHomeClick = () => {
+  const onNavClick = (source) => {
+    setactiveButton(source);
     setisPlaylistsVisible(false);
+    if (source === "library") {
+      setisPlaylistsVisible(true);
+    }
   };
 
   return (
     <>
       <div className="menu__container">
-        <div className="menu__button active" onClick={onHomeClick}>
+        <div
+          className={
+            activeButton === "home" ? "menu__button active" : "menu__button"
+          }
+          onClick={() => onNavClick("home")}
+        >
           <AiFillHome />
           <span>Home</span>
         </div>
-        <div className="menu__button">
+        <div
+          className={
+            activeButton === "search" ? "menu__button active" : "menu__button"
+          }
+          onClick={() => onNavClick("search")}
+        >
           <AiOutlineSearch />
           <span>Search</span>
         </div>
-        <div className="menu__button" onClick={onLibraryClick}>
+        <div
+          className={
+            activeButton === "library" ? "menu__button active" : "menu__button"
+          }
+          onClick={() => onNavClick("library")}
+        >
           <BiLibrary />
           <span>Library</span>
         </div>

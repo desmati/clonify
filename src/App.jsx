@@ -16,7 +16,6 @@ function App() {
       <nav className="navbar">
         <Navbar />
       </nav>
-
       <footer className="player">
         <Player />
       </footer>
