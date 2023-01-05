@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Playlists } from "./Playlists";
 
 import "../../styles/navbar/Menu.css";
+
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary } from "react-icons/bi";
 
