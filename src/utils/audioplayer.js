@@ -1,4 +1,4 @@
-export const Play = (file,) => {
+export const Play = (file, onSongFinish) => {
   let random = (Math.random() * 10000000).toFixed(0);
   let id = `audio_${random}`;
   let audioElement = document.getElementById(id);
@@ -12,7 +12,11 @@ export const Play = (file,) => {
   audioElement.autoplay = true;
   audioElement.preload = "auto";
   audioElement.addEventListener("ended", () => {
-    audioElement.remove();
+    if (onSongFinish) {
+      onSongFinish();
+    } else {
+      audioElement.remove();
+    }
   });
   setTimeout(() => {
     audioElement.muted = false;
@@ -20,4 +24,4 @@ export const Play = (file,) => {
   }, 10);
 };
 export default Play;
-// function for playing the music 
+// function for playing the music
