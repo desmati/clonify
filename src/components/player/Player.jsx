@@ -52,8 +52,8 @@ export function Player() {
   }
 
   return (
-    <div className="player__container" onClick={ShowDetails}>
-      <div className="player__song-info">
+    <div className="player__container" >
+      <div className="player__song-info" onClick={ShowDetails}>
         <img src={player.song.image} alt={player.song.title} />
         <div className="player__song-details">
           <h4>{player.song.title}</h4>
