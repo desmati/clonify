@@ -1,36 +1,99 @@
-import { useState } from "react";
 import "../../styles/navbar/CustomPlaylist.css";
-import { MdOutlinePauseCircleFilled } from "react-icons/md";
-import { Songs } from "../../utils/songs";
-import { Play } from "../../utils/audioplayer";
+import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
+import { Play, Pause } from "../../utils/audioplayer";
+import { PlayerContext } from "../../utils/playercontext";
+import { useContext } from "react";
 
 export function CustomPlaylist() {
-  const [songList, setSongList] = useState(Songs);
-  const {player, setPlayer} = useContext(PlayerContext);
-  const Playsong = () => {
-    Play(songList[0].file, () => {
-      console.log("blabla");
+  const { player, setPlayer } = useContext(PlayerContext);
+
+  const PlaySong = (source, song, index) => {
+    let startOver = false;
+    if (source === "list") {
+      // If the button at the top is clicked
+      if (player.playerId) {
+        // If have a paused song
+        index = player.index;
+        song = player.song;
+      } else {
+        // If the page is fresh and the user just started playing
+        index = 0;
+        song = player.songs[index];
+        startOver = true;
+      }
+    } else {
+      // If the songs in the list are clicked one by one
+      startOver = true;
+    }
+
+    let playerId = Play(song.file, player.playerId, startOver, () => {
+      // This ehole function is for looping
+      
+      if (index >= player.songs.length - 1) {
+        // It means we reached the end of the palylist. So we stop.
+        return;
+      }
+
+      index++;
+      let nextSong = player.songs[index];
+
+      setTimeout(() => {
+        // We are using 500ms delay to play the next song in the sake of having some pause between the songs
+        PlaySong("single", nextSong, index);
+      }, 500);
+    });
+
+    setPlayer((prev) => {
+      return {
+        ...prev,
+        index,
+        song,
+        playerId,
+        isPlaying: true,
+      };
+    });
+  };
+
+  const PauseSong = () => {
+    Pause(player.playerId);
+    setPlayer((prev) => {
+      return { ...prev, isPlaying: false };
     });
   };
 
   return (
     <div className="customplaylist__container">
       <div className="album__cover__container">
-        <img className="album__cover" src="/images/discover.png" />
+        <img
+          className="album__cover"
+          src="/images/discover.png"
+          alt="Album Cover"
+        />
         <h3 className="custom__title">Custom Playlist </h3>
         <div className="albumplay__container">
           <div className="album__details">The Beatles</div>
-          <MdOutlinePauseCircleFilled
-            className="pause__icon"
-            onClick={Playsong}
-          />
+          {player.isPlaying ? (
+            <MdOutlinePauseCircleFilled
+              className="pause__icon"
+              onClick={PauseSong}
+            />
+          ) : (
+            <MdPlayCircleFilled
+              className="pause__icon"
+              onClick={() => PlaySong("list")}
+            />
+          )}
         </div>
       </div>
 
       <div className="songlist__container">
-        {songList.map((song, index) => {
+        {player.songs.map((song, index) => {
           return (
-            <div className="song__info" key={index}>
+            <div
+              className="song__info"
+              key={index}
+              onClick={() => PlaySong("single", song, index)}
+            >
               <div className="song__test">
                 <div className="song__details">
                   <img src={song.image} alt={song.title} />

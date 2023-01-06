@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import "../../styles/body/Body.css";
-import { CustomPlaylist } from "../navbar/CustomPlaylist";
 import { Section } from "./Section";
 import { Discover } from "./Discover";
 import { Playlist } from "./Playlist";

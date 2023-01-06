@@ -1,5 +1,48 @@
 export const Songs = [
   {
+    title: "Alarm01",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm01.wav",
+  },
+  {
+    title: "Alarm02",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm02.wav",
+  },
+  {
+    title: "Alarm03",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm03.wav",
+  },
+  {
+    title: "Alarm04",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm04.wav",
+  },
+  {
+    title: "Alarm05",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm05.wav",
+  },
+  {
+    title: "Alarm06",
+    artist: "xOHARA",
+    image: "/images/song_img/8-ball-streak.jpg",
+    duration: "2:33",
+    file: "/songs/Alarm06.wav",
+  },
+
+  {
     title: "8-Ball Streak",
     artist: "xOHARA",
     image: "/images/song_img/8-ball-streak.jpg",
