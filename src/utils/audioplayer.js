@@ -30,6 +30,13 @@ export const Play = (file, id, startOver, onSongFinish) => {
       audioElement.remove();
     }
   });
+
+  // audioElement.addEventListener("timeupdate", () => {
+  //   if (onProgress) {
+  //     onProgress(audioElement.currentTime, audioElement.duration);
+  //   }
+  // });
+
   setTimeout(() => {
     audioElement.muted = false;
     audioElement.play();
