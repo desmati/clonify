@@ -6,7 +6,7 @@ import { Play } from "../../utils/audioplayer";
 
 export function CustomPlaylist() {
   const [songList, setSongList] = useState(Songs);
-
+  const {player, setPlayer} = useContext(PlayerContext);
   const Playsong = () => {
     Play(songList[0].file, () => {
       console.log("blabla");

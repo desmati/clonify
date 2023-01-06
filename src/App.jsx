@@ -3,9 +3,13 @@ import { Header } from "./components/Header";
 import { Body } from "./components/body/Body";
 import { Navbar } from "./components/navbar/Navbar";
 import { Player } from "./components/player/Player";
+import { useState } from "react";
+import { PlayerContext } from "./utils/playercontext";
 
 function App() {
+  const [player, setPlayer] = useState({});
   return (
+    <PlayerContext.Provider value = {{player, setPlayer}}>
     <div className="container">
       <header className="header">
         <Header />
@@ -20,6 +24,7 @@ function App() {
         <Player />
       </footer>
     </div>
+    </PlayerContext.Provider>
   );
 }
 
