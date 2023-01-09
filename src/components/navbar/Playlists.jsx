@@ -28,6 +28,7 @@ export function Playlists() {
 
         <div className="discover__playlist" onClick={onCustomPlaylistClick}>
           <Discover
+    
             title="Spotify Hits"
             description="Our own playlist. Give a try!"
             photo="/images/discover.png"
