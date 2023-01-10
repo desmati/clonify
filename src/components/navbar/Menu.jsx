@@ -6,6 +6,7 @@ import "../../styles/navbar/Menu.css";
 
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 export function Menu() {
   const [isPlaylistsVisible, setisPlaylistsVisible] = useState(false); //false
@@ -22,16 +23,16 @@ export function Menu() {
   return (
     <>
       <div className="menu__container">
-        <div
+        <Link 
           className={
             activeButton === "home" ? "menu__button active" : "menu__button"
           }
-          onClick={() => onNavClick("home")}
+          to="/"
         >
           <AiFillHome />
           <span>Home</span>
-        </div>
-        <div
+        </Link>
+        <Link
           className={
             activeButton === "search" ? "menu__button active" : "menu__button"
           }
@@ -39,18 +40,16 @@ export function Menu() {
         >
           <AiOutlineSearch />
           <span>Search</span>
-        </div>
-        <div
-          className={
-            activeButton === "library" ? "menu__button active" : "menu__button"
-          }
-          onClick={() => onNavClick("library")}
+        </Link>
+        <Link 
+          className="menu__button"
+          to="/library"
+  
         >
           <BiLibrary />
           <span>Library</span>
-        </div>
+        </Link>
       </div>
-      {isPlaylistsVisible && <Playlists />}
     </>
   );
 }
