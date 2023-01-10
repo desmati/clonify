@@ -37,10 +37,8 @@ export const Play = (file, id, startOver, onSongFinish) => {
   //   }
   // });
 
-  setTimeout(() => {
     audioElement.muted = false;
     audioElement.play();
-  }, 10);
 
   return id;
 };
