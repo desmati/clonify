@@ -1,0 +1,57 @@
+.playlists__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  padding: 0 1rem;
+}
+
+.search__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  width: 90vw;
+  border-radius: 0.5rem;
+}
+
+.search__symbol {
+  color: black;
+}
+
+.search__container input {
+  background: none;
+  border: 0 none;
+  width: 100%;
+  height: 100%;
+}
+
+.create__playlist {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.create__playlist button {
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 0 1rem;
+}
+
+.create__playlist h3 {
+  margin-left: 1rem;
+}
+
+.discover__playlist .discover__container {
+  margin-top: 1rem;
+}
+
+.discover__playlist img {
+  width: 3rem;
+  height: auto;
+}

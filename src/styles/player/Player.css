@@ -1,0 +1,52 @@
+.player__container {
+  position: fixed;
+  bottom: 3.5rem;
+  left: 2.5vw;
+  width: 95vw;
+  padding: 0.5rem;
+  z-index: 99999;
+  background: rgb(32, 87, 100);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player__container img {
+  height: 3rem;
+  width: auto;
+}
+
+.player__song-info {
+  display: flex;
+}
+
+.player__song-info .player__song-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  gap: 0.5;
+}
+
+.player__song-info .player__song-details h4 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.player__song-info .player__song-details span {
+  font-size: 0.8rem;
+}
+
+.player__actions {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.player__container progress {
+  position: absolute;
+  top: calc(100% - 0.3rem);
+  left: 2.5%;
+  width: 95%;
+  height: 0.3rem;
+  accent-color: red;
+}
