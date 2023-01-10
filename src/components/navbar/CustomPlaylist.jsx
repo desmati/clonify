@@ -1,7 +1,7 @@
 import "../../styles/navbar/CustomPlaylist.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
-import { Play, Pause } from "../../utils/audioplayer";
-import { PlayerContext } from "../../utils/playercontext";
+import { Play, Pause } from "../../Utils/___audioplayer";
+import { PlayerContext } from "../../Utils/PlayerContext";
 import { useContext } from "react";
 
 export function CustomPlaylist() {

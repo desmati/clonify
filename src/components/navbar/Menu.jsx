@@ -1,7 +1,4 @@
 import { useState } from "react";
-
-import { Playlists } from "./Playlists";
-
 import "../../styles/navbar/Menu.css";
 
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
@@ -9,15 +6,8 @@ import { BiLibrary } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 export function Menu() {
-  const [isPlaylistsVisible, setisPlaylistsVisible] = useState(false); //false
   const [activeButton, setactiveButton] = useState("home");
-
   const onNavClick = (source) => {
-    setactiveButton(source);
-    setisPlaylistsVisible(false);
-    if (source === "library") {
-      setisPlaylistsVisible(true);
-    }
   };
 
   return (

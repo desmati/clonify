@@ -1,12 +1,58 @@
-import { Outlet, Link } from "react-router-dom";
-import Playlists from "../components/navbar/Playlists";
+import { useState } from "react";
+import { CustomPlaylist } from "./CustomPlaylist";
+import { Discover } from "../Home/Discover";
+import { AiOutlineSearch } from "react-icons/ai";
 
-const Library = () => {
+import "../styles/Library.css";
+
+export function Library() {
+  const [isCustomPlaylistsVisible, setisCustomPlaylistsVisible] =
+    useState(false);
+
+  const onCustomPlaylistClick = () => {
+    setisCustomPlaylistsVisible(!isCustomPlaylistsVisible);
+  };
+
   return (
     <>
-      <Playlists />
+      <div className="playlists__container">
+        <div className="search__container">
+          <AiOutlineSearch className="search__symbol" />
+          <input type="search" placeholder=" Search for Playlists" />
+        </div>
+        <h2>Your Library</h2>
+        <div className="create__playlist">
+          <button>+</button>
+          <h3>Create playlist</h3>
+        </div>
+
+        <div className="discover__playlist" onClick={onCustomPlaylistClick}>
+          <Discover
+    
+            title="Spotify Hits"
+            description="Our own playlist. Give a try!"
+            photo="/images/discover.png"
+          />
+          <Discover
+            title="Summer Mix"
+            description="2022"
+            photo="/images/discover.png"
+          />
+          <Discover
+            title="Hip-Hop 2000's"
+            description="Best of all time"
+            photo="/images/discover.png"
+          />
+          <Discover
+            title="Afro Beat Mix"
+            description="2022"
+            photo="/images/discover.png"
+          />
+        </div>
+      </div>
+      {isCustomPlaylistsVisible && <CustomPlaylist />}
     </>
   );
-};
+}
 
 export default Library;

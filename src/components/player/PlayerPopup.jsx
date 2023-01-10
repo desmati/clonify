@@ -1,20 +1,22 @@
-import { useContext, useEffect, useState } from "react";
-import "../../styles/player/PlayerDetails.css";
-import PlayerContext from "../../utils/playercontext";
+import { useContext, useEffect, useState, useRef } from "react";
+import "../../styles/player/PlayerPopup.css";
+import PlayerContext from "../../Utils/PlayerContext";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { AiFillStepForward, AiFillStepBackward} from "react-icons/ai";
-import { Pause, Play } from "../../utils/audioplayer";
-import IoIosArrowBack from "react-icons/io";
+import { Pause, Play } from "../../Utils/___audioplayer";
+import { IoIosArrowBack } from "react-icons/io";
 
-export function PlayerDetails() {
+export function PlayerPopup() {
   const { player, setPlayer } = useContext(PlayerContext);
   const [playerInfo, setPlayerInfo] = useState({});
+
+  const testRef = useRef();
 
   const skipForward = () => { 
     
     const nextIndex = player.index >= player.songs.length-1 ? 0 : player.index+1
     const nextSong = player.songs[nextIndex]
-    console.log(nextSong, nextIndex)
+    console.log(testRef);
     const playerId = Play(nextSong.file)
 
     setPlayer((prev) => {
@@ -77,9 +79,18 @@ export function PlayerDetails() {
     });
   };
 
+   const closePopup = () => {
+    setPlayer((prev) => {
+      return {
+        ...prev,
+        isPopupVisible:false
+      }
+    })
+   }
+
   return (
     <div className="player-details__container">
-      <IoIosArrowBack/>
+      <IoIosArrowBack onClick={closePopup}/>
 			<img src={player.song.image} alt={player.song.title} />
       <div className="player-details__footer">
         <h4>{player.song.title}</h4>
@@ -101,4 +112,4 @@ export function PlayerDetails() {
   );
 }
 
-export default PlayerDetails;
+export default PlayerPopup;

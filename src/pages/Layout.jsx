@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Outlet, Link } from "react-router-dom";
-import Header from "../components/Header";
-import Menu from "../components/navbar/Menu";
-import Navbar from "../components/navbar/Navbar";
-import Player from "../components/player/Player";
-import PlayerContext from "../utils/playercontext";
-import Songs from "../utils/songs";
+import Header from "../Components/Header";
+import Menu from "../Components/Navbar/Menu";
+import Navbar from "../Components/Navbar/Navbar";
+import Player from "../Components/Player/Player";
+import PlayerContext from "../Utils/PlayerContext";
+import Songs from "../Utils/Songs";
 
 const Layout = () => {
   const [player, setPlayer] = useState({
     songs: Songs,
     index: 0,
   });
+
+  const testRef = useRef();
+  console.log(testRef);
 
   return (
     <PlayerContext.Provider value={{ player, setPlayer }}>
@@ -29,6 +32,7 @@ const Layout = () => {
           <Player />
         </footer>
       </div>
+      <audio ref={testRef}></audio>
     </PlayerContext.Provider>
   );
 };
