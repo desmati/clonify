@@ -10,21 +10,32 @@ export function PlayerPopup() {
   const { player, setPlayer } = useContext(PlayerContext);
   const [playerInfo, setPlayerInfo] = useState({});
 
-  const testRef = useRef();
+  const audioElement = player.audioElement;
+  // useEffect(() => {
+  //   setPlayerInfo(() => {
+  //     return {
+  //       duration: audioElement.current.duration,
+  //       progress: audioElement.current.currentTime,
+  //     };
+  //   });
+  // });
 
   const skipForward = () => {
     const nextIndex =
       player.index >= player.songs.length - 1 ? 0 : player.index + 1;
     const nextSong = player.songs[nextIndex];
-    console.log(testRef);
-    const playerId = Play(nextSong.file);
+    audioElement.current.pause();
+    audioElement.current.currentTime = 0;
+    audioElement.current.src = nextSong.file;
+    setTimeout(() => {
+      audioElement.current.play();
+    }, 10);
 
     setPlayer((prev) => {
       return {
         ...prev,
         index: nextIndex,
         song: nextSong,
-        playerId: playerId,
       };
     });
   };
@@ -34,47 +45,48 @@ export function PlayerPopup() {
       player.index === 0 ? player.songs.length - 1 : player.index - 1;
     const prevSong = player.songs[prevIndex];
 
-    const playerId = Play(prevSong.file);
+    audioElement.current.pause();
+    audioElement.current.currentTime = 0;
+    audioElement.current.src = prevSong.file;
+    audioElement.current.play();
 
     setPlayer((prev) => {
       return {
         ...prev,
         index: prevIndex,
         song: prevSong,
-        playerId: playerId,
       };
     });
   };
 
-  useEffect(() => {
-    const audioElement = document.getElementById(player.playerId);
-    if (!audioElement) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!audioElement || !audioElement.current) {
+  //     return;
+  //   }
 
-    audioElement.addEventListener("timeupdate", () => {
-      setPlayerInfo({
-        duration: audioElement.duration,
-        progress: audioElement.currentTime,
-      });
-    });
-  }, [player]);
+  //   // audioElement.current.ontimeupdate = () => {
+  //   // setPlayerInfo({
+  //   //duration: audioElement.duration,
+  //   // progress: audioElement.currentTime,
+  //   //  });
+  //   // };
+  // }, [player]);
 
-  if (!player.playerId) {
+  if (!player.song) {
     return <></>;
   }
 
   const Toggle = () => {
-    if (player.isPlaying) {
-      Pause(player.playerId);
+    if (audioElement.current.paused) {
+      audioElement.current.play();
     } else {
-      Play(player.song.file, player.playerId, false);
+      audioElement.current.pause();
     }
 
     setPlayer((prev) => {
       return {
         ...prev,
-        isPlaying: !prev.isPlaying,
+        isPlaying: !audioElement.current.paused,
       };
     });
   };
@@ -88,6 +100,10 @@ export function PlayerPopup() {
     });
   };
 
+  if (!player.isPopupVisible) {
+    return <></>;
+  }
+
   return (
     <div className="player-details__container">
       <IoIosArrowBack onClick={closePopup} />
@@ -98,7 +114,7 @@ export function PlayerPopup() {
         <div className="player-details__controls">
           <progress
             min="0"
-            max={playerInfo.duration}
+            max={playerInfo.duration ? playerInfo.duration : 1}
             value={playerInfo.progress}
           ></progress>
           <div className="player-details__actions" onClick={Toggle}>

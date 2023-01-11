@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import "./Player.css";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Pause, Play } from "../../Utils/___audioplayer";
@@ -9,35 +9,36 @@ export function Player() {
   const { player, setPlayer } = useContext(PlayerContext);
   const [playerInfo, setPlayerInfo] = useState({});
 
-  useEffect(() => {
-    const audioElement = document.getElementById(player.playerId);
-    if (!audioElement) {
-      return;
-    }
+  const audioElement = player.audioElement;
+  // useEffect(() => {
+  //   const audioElement = document.getElementById(player.playerId);
+  //   if (!audioElement) {
+  //     return;
+  //   }
 
-    audioElement.addEventListener("timeupdate", () => {
-      setPlayerInfo({
-        duration: audioElement.duration,
-        progress: audioElement.currentTime,
-      });
-    });
-  }, [player]);
+  //   // audioElement.addEventListener("timeupdate", () => {
+  //   //   setPlayerInfo({
+  //   //     duration: audioElement.duration,
+  //   //     progress: audioElement.currentTime,
+  //   //   });
+  //   // });
+  // }, [player]);
 
-  if (!player.playerId) {
+  if (!player.song) {
     return <></>;
   }
 
   const Toggle = () => {
-    if (player.isPlaying) {
-      Pause(player.playerId);
+    if (audioElement.current.paused) {
+      audioElement.current.play();
     } else {
-      Play(player.song.file, player.playerId, false);
+      audioElement.current.pause();
     }
 
     setPlayer((prev) => {
       return {
         ...prev,
-        isPlaying: !prev.isPlaying,
+        isPlaying: !audioElement.current.paused,
       };
     });
   };
@@ -50,10 +51,6 @@ export function Player() {
       };
     });
   };
-
-  if (player.isPopupVisible) {
-    return <PlayerPopup />;
-  }
 
   return (
     <div className="player__container">

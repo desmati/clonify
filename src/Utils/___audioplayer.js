@@ -1,53 +1,53 @@
-export const Play = (file, id, startOver, onSongFinish) => {
-  if (!id) {
-    // If there is an id in the inputs then we should continue playing the paused song
-    let random = (Math.random() * 10000000).toFixed(0);
-    id = `audio_${random}`;
-  }
+// export const Play = (file, id, startOver, onSongFinish) => {
+//   if (!id) {
+//     // If there is an id in the inputs then we should continue playing the paused song
+//     let random = (Math.random() * 10000000).toFixed(0);
+//     id = `audio_${random}`;
+//   }
 
-  let audioElement = document.getElementById(id);
-  if (audioElement) {
-    if (startOver) {
-      audioElement.remove();
-    } else {
-      audioElement.play();
-      return id;
-    }
-  }
+//   let audioElement = document.getElementById(id);
+//   if (audioElement) {
+//     if (startOver) {
+//       audioElement.remove();
+//     } else {
+//       audioElement.play();
+//       return id;
+//     }
+//   }
 
-  audioElement = document.createElement("audio");
-  document.body.append(audioElement);
+//   audioElement = document.createElement("audio");
+//   document.body.append(audioElement);
 
-  audioElement.id = id;
-  audioElement.muted = true;
-  audioElement.src = file;
-  audioElement.autoplay = true;
-  audioElement.preload = "auto";
-  audioElement.addEventListener("ended", () => {
-    if (onSongFinish) {
-      onSongFinish();
-    } else {
-      audioElement.remove();
-    }
-  });
+//   audioElement.id = id;
+//   audioElement.muted = true;
+//   audioElement.src = file;
+//   audioElement.autoplay = true;
+//   audioElement.preload = "auto";
+//   audioElement.addEventListener("ended", () => {
+//     if (onSongFinish) {
+//       onSongFinish();
+//     } else {
+//       audioElement.remove();
+//     }
+//   });
 
-  // audioElement.addEventListener("timeupdate", () => {
-  //   if (onProgress) {
-  //     onProgress(audioElement.currentTime, audioElement.duration);
-  //   }
-  // });
+//   // audioElement.addEventListener("timeupdate", () => {
+//   //   if (onProgress) {
+//   //     onProgress(audioElement.currentTime, audioElement.duration);
+//   //   }
+//   // });
 
-  audioElement.muted = false;
-  audioElement.play();
+//   audioElement.muted = false;
+//   audioElement.play();
 
-  return id;
-};
+//   return id;
+// };
 
-export const Pause = (elementId) => {
-  const audioElement = document.getElementById(elementId);
-  audioElement.pause();
-};
+// export const Pause = (elementId) => {
+//   const audioElement = document.getElementById(elementId);
+//   audioElement.pause();
+// };
 
-// export default { Play, Pause };
+// // export default { Play, Pause };
 
-// function for playing the music
+// // function for playing the music
