@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../Components/Header";
-import Menu from "../Components/Navbar/Menu";
 import Navbar from "../Components/Navbar/Navbar";
 import Player from "../Components/Player/Player";
 import PlayerContext from "../Utils/PlayerContext";
 import Songs from "../Utils/Songs";
+import "../Styles/Layout.css";
 
 const Layout = () => {
   const [player, setPlayer] = useState({

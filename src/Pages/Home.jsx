@@ -1,14 +1,14 @@
-import "../../styles/Home.css";
-import { Section } from "./Section";
-import { Discover } from "./Discover";
-import { Playlist } from "./Playlist";
+import "../Styles/Home.css";
+import { Section } from "../Components/Body/Section";
+import DiscoverTile from "../Components/Body/DiscoverTile";
+import Tile from "../Components/Body/Tile";
 
 export function Home() {
   return (
     <div className="body__container">
       <div>
         <Section title="Discover">
-          <Discover
+          <DiscoverTile
             title="Discover Weekly"
             description="Our own playlist. Give a try!"
             photo="/images/discover.png"
@@ -19,27 +19,27 @@ export function Home() {
       <Section title="Recommended">
         <div className="body__playlists">
           <div className="playlists__scroll">
-            <Playlist
+            <Tile
               photo="/images/vampire.png"
               name="Coding Mode"
               description="4-2"
             />
-            <Playlist
+            <Tile
               photo="/images/maracatu.png"
               name="New World"
               description="Arneo Turnes - Winter 2020"
             />
-            <Playlist
+            <Tile
               photo="/images/adfab.png"
               name="Beats to think to"
               description="AdFab Open space"
             />
-            <Playlist
+            <Tile
               photo="/images/vostop.png"
               name="Hollow Shell"
               description="Vos Top Titres en 2019"
             />
-            <Playlist
+            <Tile
               photo="/images/edbangeer.png"
               name="The Rain of Love"
               description="Ed Banger 15 ans"
@@ -51,27 +51,27 @@ export function Home() {
       <Section title="Made For You">
         <div className="body__playlists">
           <div className="playlists__scroll">
-            <Playlist
+            <Tile
               photo="/images/adfab.png"
               name="Beats to think to"
               description="DAGO Summer mix"
             />
-            <Playlist
+            <Tile
               photo="/images/fleetwoood.png"
               name="Coding Mode"
               description="Rock Classics"
             />
-            <Playlist
+            <Tile
               photo="/images/dailymix.png"
               name="Hollow Shell"
               description="80's Smash Hits"
             />
-            <Playlist
+            <Tile
               photo="/images/adfab.png"
               name="The Rain of Love"
               description="Hip Hop Raggae"
             />
-            <Playlist
+            <Tile
               photo="/images/edbangeer.png"
               name="New World"
               description="Ultimate Dancefloor Oldies"

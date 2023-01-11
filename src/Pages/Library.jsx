@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CustomPlaylist } from "./CustomPlaylist";
-import { Discover } from "../Home/Discover";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import "../styles/Library.css";
+import "../Styles/Library.css";
+import Playlist from "./Playlist";
+import DiscoverTile from "../Components/Body/DiscoverTile";
 
 export function Library() {
   const [isCustomPlaylistsVisible, setisCustomPlaylistsVisible] =
@@ -27,30 +27,29 @@ export function Library() {
         </div>
 
         <div className="discover__playlist" onClick={onCustomPlaylistClick}>
-          <Discover
-    
+          <DiscoverTile
             title="Spotify Hits"
             description="Our own playlist. Give a try!"
             photo="/images/discover.png"
           />
-          <Discover
+          <DiscoverTile
             title="Summer Mix"
             description="2022"
             photo="/images/discover.png"
           />
-          <Discover
+          <DiscoverTile
             title="Hip-Hop 2000's"
             description="Best of all time"
             photo="/images/discover.png"
           />
-          <Discover
+          <DiscoverTile
             title="Afro Beat Mix"
             description="2022"
             photo="/images/discover.png"
           />
         </div>
       </div>
-      {isCustomPlaylistsVisible && <CustomPlaylist />}
+      {isCustomPlaylistsVisible && <Playlist />}
     </>
   );
 }

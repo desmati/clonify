@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import "../../styles/player/Player.css";
+import "../../Styles/Player/Player.css";
 import PlayerContext from "../../Utils/PlayerContext";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Pause, Play } from "../../Utils/___audioplayer";
@@ -7,7 +7,6 @@ import { PlayerPopup } from "./PlayerPopup";
 
 export function Player() {
   const { player, setPlayer } = useContext(PlayerContext);
-  const [isDetailsVisible, setIsDetailsVisible] = useState(false);
   const [playerInfo, setPlayerInfo] = useState({});
 
   useEffect(() => {
@@ -44,12 +43,12 @@ export function Player() {
   };
 
   const ShowPopup = () => {
-      setPlayer((prev) => {
-        return {
-          ...prev,
-          isPopupVisible:true
-        }
-      })
+    setPlayer((prev) => {
+      return {
+        ...prev,
+        isPopupVisible: true,
+      };
+    });
   };
 
   if (player.isPopupVisible) {
@@ -57,7 +56,7 @@ export function Player() {
   }
 
   return (
-    <div className="player__container" >
+    <div className="player__container">
       <div className="player__song-info" onClick={ShowPopup}>
         <img src={player.song.image} alt={player.song.title} />
         <div className="player__song-details">

@@ -1,11 +1,11 @@
-
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import Library from "./Pages/Library";
-import SongPlayList from "./Pages/SongPlayList";
 import Home from "./Pages/Home";
+import Playlist from "./Pages/Playlist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,7 +16,7 @@ root.render(
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/library" element={<Library />} />
-          <Route path="/songplaylist" element={<SongPlayList />} />
+          <Route path="/playlist" element={<Playlist />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import "../../styles/body/Section.css";
+import "../../Styles/Body/Section.css";
 
 export function Section({ children, title }) {
   return (

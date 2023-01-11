@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import "../../styles/player/PlayerPopup.css";
+import "../../Styles/Player/PlayerPopup.css";
 import PlayerContext from "../../Utils/PlayerContext";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
-import { AiFillStepForward, AiFillStepBackward} from "react-icons/ai";
+import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
 import { Pause, Play } from "../../Utils/___audioplayer";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -12,39 +12,39 @@ export function PlayerPopup() {
 
   const testRef = useRef();
 
-  const skipForward = () => { 
-    
-    const nextIndex = player.index >= player.songs.length-1 ? 0 : player.index+1
-    const nextSong = player.songs[nextIndex]
+  const skipForward = () => {
+    const nextIndex =
+      player.index >= player.songs.length - 1 ? 0 : player.index + 1;
+    const nextSong = player.songs[nextIndex];
     console.log(testRef);
-    const playerId = Play(nextSong.file)
+    const playerId = Play(nextSong.file);
 
     setPlayer((prev) => {
       return {
         ...prev,
-        index:nextIndex,
-        song:nextSong,
-        playerId:playerId
-      }
-    })
-  }
+        index: nextIndex,
+        song: nextSong,
+        playerId: playerId,
+      };
+    });
+  };
 
   const skipBackwards = () => {
+    const prevIndex =
+      player.index === 0 ? player.songs.length - 1 : player.index - 1;
+    const prevSong = player.songs[prevIndex];
 
-    const prevIndex = player.index === 0 ? player.songs.length-1 : player.index-1
-    const prevSong = player.songs[prevIndex]
-
-    const playerId = Play(prevSong.file)
+    const playerId = Play(prevSong.file);
 
     setPlayer((prev) => {
       return {
         ...prev,
-        index:prevIndex,
-        song:prevSong,
-        playerId:playerId
-      }
-    })
-  }
+        index: prevIndex,
+        song: prevSong,
+        playerId: playerId,
+      };
+    });
+  };
 
   useEffect(() => {
     const audioElement = document.getElementById(player.playerId);
@@ -79,34 +79,38 @@ export function PlayerPopup() {
     });
   };
 
-   const closePopup = () => {
+  const closePopup = () => {
     setPlayer((prev) => {
       return {
         ...prev,
-        isPopupVisible:false
-      }
-    })
-   }
+        isPopupVisible: false,
+      };
+    });
+  };
 
   return (
     <div className="player-details__container">
-      <IoIosArrowBack onClick={closePopup}/>
-			<img src={player.song.image} alt={player.song.title} />
+      <IoIosArrowBack onClick={closePopup} />
+      <img src={player.song.image} alt={player.song.title} />
       <div className="player-details__footer">
         <h4>{player.song.title}</h4>
         <span className="player-details__artist">{player.song.artist}</span>
         <div className="player-details__controls">
-				<progress
-          min="0"
-          max={playerInfo.duration}
-          value={playerInfo.progress}
-        ></progress>
-        <div className="player-details__actions" onClick={Toggle}>
-					<AiFillStepBackward className="actions" onClick={skipBackwards}/>
-          {player.isPlaying ? <MdOutlinePauseCircleFilled /> : <MdPlayCircleFilled />}
-					<AiFillStepForward className="actions" onClick={skipForward}/>
+          <progress
+            min="0"
+            max={playerInfo.duration}
+            value={playerInfo.progress}
+          ></progress>
+          <div className="player-details__actions" onClick={Toggle}>
+            <AiFillStepBackward className="actions" onClick={skipBackwards} />
+            {player.isPlaying ? (
+              <MdOutlinePauseCircleFilled />
+            ) : (
+              <MdPlayCircleFilled />
+            )}
+            <AiFillStepForward className="actions" onClick={skipForward} />
+          </div>
         </div>
-				</div>
       </div>
     </div>
   );
