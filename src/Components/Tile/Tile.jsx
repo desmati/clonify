@@ -1,4 +1,4 @@
-import "../../Styles/Body/Tile.css";
+import "./Tile.css";
 
 export function Tile({ title, description, photo }) {
   return (

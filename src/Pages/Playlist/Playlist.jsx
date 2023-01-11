@@ -1,8 +1,8 @@
-import "../Styles/Playlist.css";
+import "./Playlist.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { useContext } from "react";
-import PlayerContext from "../Utils/PlayerContext";
-import { Pause, Play } from "../Utils/___audioplayer";
+import PlayerContext from "../../Utils/PlayerContext";
+import { Pause, Play } from "../../Utils/___audioplayer";
 
 export function Playlist() {
   const { player, setPlayer } = useContext(PlayerContext);

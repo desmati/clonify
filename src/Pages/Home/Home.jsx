@@ -1,7 +1,7 @@
-import "../Styles/Home.css";
-import { Section } from "../Components/Body/Section";
-import DiscoverTile from "../Components/Body/DiscoverTile";
-import Tile from "../Components/Body/Tile";
+import Tile from "../../Components/Tile/Tile";
+import DiscoverTile from "../../Components/DiscoverTile/DiscoverTile";
+import Section from "../../Components/Section/Section";
+import "./Home.css";
 
 export function Home() {
   return (

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import "../../Styles/Player/Player.css";
-import PlayerContext from "../../Utils/PlayerContext";
+import "./Player.css";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Pause, Play } from "../../Utils/___audioplayer";
-import { PlayerPopup } from "./PlayerPopup";
+import PlayerContext from "../../Utils/PlayerContext";
+import PlayerPopup from "../PlayerPopup/PlayerPopup";
 
 export function Player() {
   const { player, setPlayer } = useContext(PlayerContext);

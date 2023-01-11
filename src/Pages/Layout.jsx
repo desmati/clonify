@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../Components/Header";
+import Header from "../Components/Header/Header";
 import Navbar from "../Components/Navbar/Navbar";
 import Player from "../Components/Player/Player";
 import PlayerContext from "../Utils/PlayerContext";
 import Songs from "../Utils/Songs";
-import "../Styles/Layout.css";
+import "./Layout.css";
 
 const Layout = () => {
   const [player, setPlayer] = useState({

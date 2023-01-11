@@ -1,4 +1,4 @@
-import "../Styles/Header.css";
+import "./Header.css";
 import { CiSettings } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
 

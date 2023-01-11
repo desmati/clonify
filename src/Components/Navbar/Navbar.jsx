@@ -1,4 +1,4 @@
-import "../../Styles/Navbar/Navbar.css";
+import "./Navbar.css";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary } from "react-icons/bi";
 import { NavLink } from "react-router-dom";

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import "../Styles/Library.css";
-import Playlist from "./Playlist";
-import DiscoverTile from "../Components/Body/DiscoverTile";
+import "./Library.css";
+import Playlist from "../Playlist/Playlist";
+import DiscoverTile from "../../Components/DiscoverTile/DiscoverTile";
 
 export function Library() {
   const [isCustomPlaylistsVisible, setisCustomPlaylistsVisible] =

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import "../../Styles/Player/PlayerPopup.css";
-import PlayerContext from "../../Utils/PlayerContext";
+import "./PlayerPopup.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
-import { Pause, Play } from "../../Utils/___audioplayer";
 import { IoIosArrowBack } from "react-icons/io";
+import PlayerContext from "../../Utils/PlayerContext";
+import { Pause, Play } from "../../Utils/___audioplayer";
 
 export function PlayerPopup() {
   const { player, setPlayer } = useContext(PlayerContext);

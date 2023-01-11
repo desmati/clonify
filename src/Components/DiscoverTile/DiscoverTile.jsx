@@ -1,4 +1,4 @@
-import "../../Styles/Body/DiscoverTile.css";
+import "./DiscoverTile.css";
 import { Link } from "react-router-dom";
 
 export function DiscoverTile({ title, description, photo }) {
