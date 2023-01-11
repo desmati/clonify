@@ -1,18 +1,9 @@
-import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
 import "./Library.css";
-import Playlist from "../Playlist/Playlist";
 import DiscoverTile from "../../Components/DiscoverTile/DiscoverTile";
 
 export function Library() {
-  const [isCustomPlaylistsVisible, setisCustomPlaylistsVisible] =
-    useState(false);
-
-  const onCustomPlaylistClick = () => {
-    setisCustomPlaylistsVisible(!isCustomPlaylistsVisible);
-  };
-
   return (
     <>
       <div className="playlists__container">
@@ -26,7 +17,7 @@ export function Library() {
           <h3>Create playlist</h3>
         </div>
 
-        <div className="discover__playlist" onClick={onCustomPlaylistClick}>
+        <div className="discover__playlist">
           <DiscoverTile
             title="Spotify Hits"
             description="Our own playlist. Give a try!"
@@ -49,7 +40,6 @@ export function Library() {
           />
         </div>
       </div>
-      {isCustomPlaylistsVisible && <Playlist />}
     </>
   );
 }

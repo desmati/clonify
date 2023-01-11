@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef} from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Navbar from "../Components/Navbar/Navbar";
@@ -23,15 +23,41 @@ const Layout = () => {
         progress: player.audioElement.current.currentTime,
       };
     });
-    console.log(player.duration);
+    console.log(player.progress);
   };
 
-  // useEffect(() => {
-  //   player.audioElement.current.addEventListner("timeUpdate" = () => {
+  const ended = () => {
+    const audioElement = player.audioElement;
+    const nextIndex =
+      player.index >= player.songs.length - 1 ? 0 : player.index + 1;
+    const nextSong = player.songs[nextIndex];
+    if (player.index === player.songs.length - 1) {
+      setPlayer((prev) => {
+        return {
+          ...prev,
+          index: 0,
+          song: nextSong,
+          isPlaying: false,
+          progress: 0,
+        };
+      });
+      return;
+    }
+    audioElement.current.pause();
+    audioElement.current.currentTime = 0;
+    audioElement.current.src = nextSong.file;
+    setTimeout(() => {
+      audioElement.current.play();
+    }, 10);
 
-  //     console.log(player);
-  //   });
-  // }, [player]);
+    setPlayer((prev) => {
+      return {
+        ...prev,
+        index: nextIndex,
+        song: nextSong,
+      };
+    });
+  };
 
   return (
     <PlayerContext.Provider value={{ player, setPlayer }}>
@@ -55,6 +81,7 @@ const Layout = () => {
         preload="auto"
         id="audio-element"
         onTimeUpdate={timeUpdate}
+        onEnded={ended}
       ></audio>
       <PlayerPopup />
     </PlayerContext.Provider>

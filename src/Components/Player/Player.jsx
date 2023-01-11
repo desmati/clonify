@@ -1,28 +1,13 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext} from "react";
 import "./Player.css";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
-import { Pause, Play } from "../../Utils/___audioplayer";
 import PlayerContext from "../../Utils/PlayerContext";
-import PlayerPopup from "../PlayerPopup/PlayerPopup";
+
 
 export function Player() {
   const { player, setPlayer } = useContext(PlayerContext);
-  const [playerInfo, setPlayerInfo] = useState({});
 
   const audioElement = player.audioElement;
-  // useEffect(() => {
-  //   const audioElement = document.getElementById(player.playerId);
-  //   if (!audioElement) {
-  //     return;
-  //   }
-
-  //   // audioElement.addEventListener("timeupdate", () => {
-  //   //   setPlayerInfo({
-  //   //     duration: audioElement.duration,
-  //   //     progress: audioElement.currentTime,
-  //   //   });
-  //   // });
-  // }, [player]);
 
   if (!player.song) {
     return <></>;
@@ -66,8 +51,8 @@ export function Player() {
       </div>
       <progress
         min="0"
-        max={playerInfo.duration}
-        value={playerInfo.progress}
+        max={player.duration ? player.duration : 1}
+        value={player.progress}
       ></progress>
     </div>
   );

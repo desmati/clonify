@@ -1,24 +1,14 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext} from "react";
 import "./PlayerPopup.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import PlayerContext from "../../Utils/PlayerContext";
-import { Pause, Play } from "../../Utils/___audioplayer";
 
 export function PlayerPopup() {
   const { player, setPlayer } = useContext(PlayerContext);
-  const [playerInfo, setPlayerInfo] = useState({});
 
   const audioElement = player.audioElement;
-  // useEffect(() => {
-  //   setPlayerInfo(() => {
-  //     return {
-  //       duration: audioElement.current.duration,
-  //       progress: audioElement.current.currentTime,
-  //     };
-  //   });
-  // });
 
   const skipForward = () => {
     const nextIndex =
@@ -48,7 +38,9 @@ export function PlayerPopup() {
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     audioElement.current.src = prevSong.file;
-    audioElement.current.play();
+    setTimeout(() => {
+      audioElement.current.play();
+    }, 10);
 
     setPlayer((prev) => {
       return {
@@ -58,19 +50,6 @@ export function PlayerPopup() {
       };
     });
   };
-
-  // useEffect(() => {
-  //   if (!audioElement || !audioElement.current) {
-  //     return;
-  //   }
-
-  //   // audioElement.current.ontimeupdate = () => {
-  //   // setPlayerInfo({
-  //   //duration: audioElement.duration,
-  //   // progress: audioElement.currentTime,
-  //   //  });
-  //   // };
-  // }, [player]);
 
   if (!player.song) {
     return <></>;
@@ -114,8 +93,8 @@ export function PlayerPopup() {
         <div className="player-details__controls">
           <progress
             min="0"
-            max={playerInfo.duration ? playerInfo.duration : 1}
-            value={playerInfo.progress}
+            max={player.duration ? player.duration : 1}
+            value={player.progress}
           ></progress>
           <div className="player-details__actions" onClick={Toggle}>
             <AiFillStepBackward className="actions" onClick={skipBackwards} />
