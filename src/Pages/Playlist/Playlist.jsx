@@ -1,10 +1,10 @@
-import "../../styles/navbar/CustomPlaylist.css";
+import "./Playlist.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
-import { Play, Pause } from "../../utils/audioplayer";
-import { PlayerContext } from "../../utils/playercontext";
 import { useContext } from "react";
+import PlayerContext from "../../Utils/PlayerContext";
+import { Pause, Play } from "../../Utils/___audioplayer";
 
-export function CustomPlaylist() {
+export function Playlist() {
   const { player, setPlayer } = useContext(PlayerContext);
 
   const PlaySong = (source, song, index) => {
@@ -28,7 +28,7 @@ export function CustomPlaylist() {
 
     let playerId = Play(song.file, player.playerId, startOver, () => {
       // This ehole function is for looping
-      
+
       if (index >= player.songs.length - 1) {
         // It means we reached the end of the palylist. So we stop.
         return;
@@ -69,7 +69,7 @@ export function CustomPlaylist() {
           src="/images/discover.png"
           alt="Album Cover"
         />
-        <h3 className="custom__title">Custom Playlist </h3>
+        <h3 className="custom__title">Playlist</h3>
         <div className="albumplay__container">
           <div className="album__details">The Beatles</div>
           {player.isPlaying ? (
@@ -112,4 +112,4 @@ export function CustomPlaylist() {
   );
 }
 
-export default CustomPlaylist;
+export default Playlist;

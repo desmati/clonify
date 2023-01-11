@@ -37,8 +37,8 @@ export const Play = (file, id, startOver, onSongFinish) => {
   //   }
   // });
 
-    audioElement.muted = false;
-    audioElement.play();
+  audioElement.muted = false;
+  audioElement.play();
 
   return id;
 };

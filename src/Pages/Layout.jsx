@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
-import Header from "../components/Header";
-import Menu from "../components/navbar/Menu";
-import Navbar from "../components/navbar/Navbar";
-import Player from "../components/player/Player";
-import PlayerContext from "../utils/playercontext";
-import Songs from "../utils/songs";
+import { useState, useRef } from "react";
+import { Outlet } from "react-router-dom";
+import Header from "../Components/Header/Header";
+import Navbar from "../Components/Navbar/Navbar";
+import Player from "../Components/Player/Player";
+import PlayerContext from "../Utils/PlayerContext";
+import Songs from "../Utils/Songs";
+import "./Layout.css";
 
 const Layout = () => {
   const [player, setPlayer] = useState({
     songs: Songs,
     index: 0,
   });
+
+  const audioElement = useRef();
 
   return (
     <PlayerContext.Provider value={{ player, setPlayer }}>
@@ -29,6 +31,7 @@ const Layout = () => {
           <Player />
         </footer>
       </div>
+      <audio ref={audioElement} muted  autoplay preload="auto" id="audio-element"></audio>
     </PlayerContext.Provider>
   );
 };

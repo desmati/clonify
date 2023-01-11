@@ -1,6 +1,6 @@
-import "../../styles/body/Playlist.css";
+import "./Tile.css";
 
-export function Playlist({ title, description, photo }) {
+export function Tile({ title, description, photo }) {
   return (
     <div className="playlist__container">
       <img className="playlist__photo" src={photo} alt={title} />
@@ -10,4 +10,4 @@ export function Playlist({ title, description, photo }) {
   );
 }
 
-export default Playlist;
+export default Tile;

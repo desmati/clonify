@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Layout from "./pages/Layout";
-import Library from "./pages/Library";
-import SongPlayList from "./pages/SongPlayList";
-
-import { PlayerContext } from "./utils/playercontext";
-import Songs from "./utils/songs";
-import Body from "./components/body/Body";
+import Layout from "./Pages/Layout";
+import Library from "./Pages/Library/Library";
+import Home from "./Pages/Home/Home";
+import Playlist from "./Pages/Playlist/Playlist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,9 +14,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Body />} />
+          <Route index element={<Home />} />
           <Route path="/library" element={<Library />} />
-          <Route path="/songplaylist" element={<SongPlayList />} />
+          <Route path="/playlist" element={<Playlist />} />
         </Route>
       </Routes>
     </BrowserRouter>
