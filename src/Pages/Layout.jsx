@@ -13,8 +13,7 @@ const Layout = () => {
     index: 0,
   });
 
-  const testRef = useRef();
-  console.log(testRef);
+  const audioElement = useRef();
 
   return (
     <PlayerContext.Provider value={{ player, setPlayer }}>
@@ -32,7 +31,7 @@ const Layout = () => {
           <Player />
         </footer>
       </div>
-      <audio ref={testRef}></audio>
+      <audio ref={audioElement} muted  autoplay preload="auto" id="audio-element"></audio>
     </PlayerContext.Provider>
   );
 };
