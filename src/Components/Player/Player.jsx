@@ -9,6 +9,7 @@ export function Player() {
 
   const audioElement = player.audioElement;
 
+  //If there is no song selected then return nothing
   if (!player.song) {
     return <></>;
   }
@@ -28,10 +29,13 @@ export function Player() {
     });
   };
 
+  //Toggle for our PopUp page
   const ShowPopup = () => {
     setPlayer((prev) => {
       return {
         ...prev,
+        
+        //display or hide our popup
         isPopupVisible: true,
       };
     });
@@ -51,7 +55,9 @@ export function Player() {
       </div>
       <progress
         min="0"
+        //connecting the max to our global state so we can get the songs duration
         max={player.duration ? player.duration : 1}
+        //connecting the value to our global state so we can get the songs progress
         value={player.progress}
       ></progress>
     </div>

@@ -1,3 +1,6 @@
+
+/* This is our songs in an Array Object, which can also be called static data
+This is for us to be able to fetch these songs without using an API*/
 export const Songs = [
   {
     title: "8-Ball Streak",

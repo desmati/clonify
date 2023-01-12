@@ -34,7 +34,6 @@ export function PlayerPopup() {
     const prevIndex =
       player.index === 0 ? player.songs.length - 1 : player.index - 1;
     const prevSong = player.songs[prevIndex];
-
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     audioElement.current.src = prevSong.file;
@@ -70,6 +69,7 @@ export function PlayerPopup() {
     });
   };
 
+  //PopUp Toggle
   const closePopup = () => {
     setPlayer((prev) => {
       return {
@@ -79,10 +79,11 @@ export function PlayerPopup() {
     });
   };
 
+  //if popUp is false then return an empty component
   if (!player.isPopupVisible) {
     return <></>;
   }
-
+  //else return below content
   return (
     <div className="player-details__container">
       <IoIosArrowBack onClick={closePopup} />

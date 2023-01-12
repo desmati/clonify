@@ -10,6 +10,7 @@ export const App = () => {
   return (
     <div className="app-container">
       <React.StrictMode>
+        {/* React App format*/}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
