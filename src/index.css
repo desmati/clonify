@@ -85,3 +85,12 @@ body {
   background: var(--background-color);
   color: var(--text-color);
 }
+
+/* @media screen and (min-width: 425px) {
+  #root {
+    width: 425px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0 auto;
+  }
+} */
