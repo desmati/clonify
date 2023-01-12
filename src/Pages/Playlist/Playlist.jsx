@@ -1,6 +1,6 @@
 import "./Playlist.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
-import { useContext} from "react";
+import { useContext } from "react";
 import PlayerContext from "../../Utils/PlayerContext";
 
 export function Playlist() {
@@ -48,11 +48,13 @@ export function Playlist() {
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     audioElement.current.src = song.file;
-    audioElement.current.play();
+    setTimeout(() => {
+      audioElement.current.play();
+    }, 10);
 
     setPlayer((prev) => {
       return {
-        //saving the previous state so we can change under 
+        //saving the previous state so we can change under
         ...prev,
         //which song selected by the index since the songs are in an Array Object
         index,
