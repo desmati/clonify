@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
-import { AudioElement } from "../Components/AudioElement";
+import { AudioElement } from "../Components/Player/AudioElement";
 import Header from "../Components/Header/Header";
 import Navbar from "../Components/Navbar/Navbar";
 import Player from "../Components/Player/Player";
