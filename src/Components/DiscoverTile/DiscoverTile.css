@@ -1,0 +1,7 @@
+.discover__container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: #fff;
+  text-decoration: none;
+}

@@ -1,31 +1,27 @@
-// import "./App.css";
-// import { Header } from "./components/Header";
-// import { Body } from "./components/body/Body";
-// import { Navbar } from "./components/navbar/Navbar";
-// import { Player } from "./components/player/Player";
-// import { useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Pages/Layout";
+import Library from "./Pages/Library/Library";
+import Home from "./Pages/Home/Home";
+import Playlist from "./Pages/Playlist/Playlist";
+import './App.css'
 
-// import { Songs } from "./utils/songs";
+export const App = () => {
+  return (
+    <div className="app-container">
+      <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/playlist" element={<Playlist />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
+    </div>
+  );
+};
 
-// function App() {
-
-//   return (
-
-//       <div className="container">
-//         <header className="header">
-//           <Header />
-//         </header>
-//         <main className="body">
-//           <Body />
-//         </main>
-//         <nav className="navbar">
-//           <Navbar />
-//         </nav>
-//         <footer className="player">
-//           <Player />
-//         </footer>
-//       </div>
-//   );
-// }
-
-// export default App;
+export default App;
