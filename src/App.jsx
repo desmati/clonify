@@ -4,10 +4,12 @@ import Layout from "./Pages/Layout";
 import Library from "./Pages/Library/Library";
 import Home from "./Pages/Home/Home";
 import Playlist from "./Pages/Playlist/Playlist";
+import './App.css'
 
 export const App = () => {
   return (
-    <React.StrictMode>
+    <div className="app-container">
+      <React.StrictMode>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -18,6 +20,7 @@ export const App = () => {
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
+    </div>
   );
 };
 
