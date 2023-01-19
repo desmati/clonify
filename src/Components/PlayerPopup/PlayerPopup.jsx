@@ -1,25 +1,32 @@
-import { useContext} from "react";
+import { useContext, useEffect } from "react";
 import "./PlayerPopup.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { AiFillStepForward, AiFillStepBackward } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import PlayerContext from "../../Utils/PlayerContext";
+import { GetSongs } from "../../Utils/Songs";
 
 export function PlayerPopup() {
   const { player, setPlayer } = useContext(PlayerContext);
+  const songs = GetSongs();
+  useEffect(() => {
+    if (player.song) {
+      document.title = `${player.song.title} - Esmatify`;
+    }
+  }, [player]);
 
   const audioElement = player.audioElement;
 
   const skipForward = () => {
-    const nextIndex =
-      player.index >= player.songs.length - 1 ? 0 : player.index + 1;
-    const nextSong = player.songs[nextIndex];
+    let nextIndex = player.index >= songs.length - 1 ? 0 : player.index + 1;
+    const nextSong = GetSongs(nextIndex);
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     audioElement.current.src = nextSong.file;
+    
     setTimeout(() => {
       audioElement.current.play();
-    }, 10);
+   }, 10);
 
     setPlayer((prev) => {
       return {
@@ -31,9 +38,8 @@ export function PlayerPopup() {
   };
 
   const skipBackwards = () => {
-    const prevIndex =
-      player.index === 0 ? player.songs.length - 1 : player.index - 1;
-    const prevSong = player.songs[prevIndex];
+    const prevIndex = player.index === 0 ? songs.length - 1 : player.index - 1;
+    const prevSong = GetSongs(prevIndex);
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     audioElement.current.src = prevSong.file;

@@ -6,14 +6,13 @@ import Navbar from "../Components/Navbar/Navbar";
 import Player from "../Components/Player/Player";
 import PlayerPopup from "../Components/PlayerPopup/PlayerPopup";
 import PlayerContext from "../Utils/PlayerContext";
-import Songs from "../Utils/Songs";
 import "./Layout.css";
 
+// const Layout = function() {
 const Layout = () => {
   //This is our main state that we've turned to being global with useContext hook and it's content
   const [player, setPlayer] = useState({
     //Connecting the Songs.js content to our global state
-    songs: Songs,
     index: 0,
     audioElement: useRef(),
     isPopupVisible: false,
@@ -21,6 +20,8 @@ const Layout = () => {
     duration: 0,
     song: null,
   });
+
+  setInterval(()=>console.log(this),1000);
 
   return (
     //Wrapping the context around our Layout.jsx with "PlayerContext.Provider".

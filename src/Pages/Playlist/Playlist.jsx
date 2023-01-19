@@ -2,10 +2,12 @@ import "./Playlist.css";
 import { MdOutlinePauseCircleFilled, MdPlayCircleFilled } from "react-icons/md";
 import { useContext } from "react";
 import PlayerContext from "../../Utils/PlayerContext";
+import { GetSongs } from "../../Utils/Songs";
 
 export function Playlist() {
   //Calling our context hook, calling our state
   const { player, setPlayer } = useContext(PlayerContext);
+  const songs = GetSongs();
 
   //Connecting a audioElement to our player state
   const audioElement = player.audioElement;
@@ -14,7 +16,7 @@ export function Playlist() {
     //If not there is no song selected
     if (!player.song) {
       //select the first song
-      let song = player.songs[0];
+      let song = songs[0];
       //set the src to that song
       audioElement.current.src = song.file;
       //specifiy the first song
@@ -90,7 +92,7 @@ export function Playlist() {
 
       <div className="songlist__container">
         {/* Mapping through our Songs.js */}
-        {player.songs.map((song, index) => {
+        {songs.map((song, index) => {
           return (
             <div
               className="song__info"

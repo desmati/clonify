@@ -11,4 +11,14 @@ export function Section({ children, title }) {
   );
 }
 
+// export function Section(properties) {
+//   return (
+//     <div className="section__container">
+//       {/* setting the props */}
+//       <h2>{properties.title}</h2>
+//       {properties.children}
+//     </div>
+//   );
+// }
+
 export default Section;
